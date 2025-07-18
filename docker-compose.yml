@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: ecomdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - ecom-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  springboot-app:
+    image: springboot-ecom
+    container_name: springboot_app
+    restart: on-failure
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - ecom-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - ecom-network
+
+networks:
+  ecom-network:
+    driver: bridge
+
+volumes:
+  db_data:
