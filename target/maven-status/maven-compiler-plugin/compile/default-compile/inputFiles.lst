@@ -1,0 +1,6 @@
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/Application.java
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/controller/ProductController.java
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/config/OpenApiConfig.java
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/entity/Product.java
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/service/ProductService.java
+/home/alvin/GitHub/e-com/src/main/java/com/springboot/ecom/repository/ProductRepository.java
