@@ -1,4 +1,5 @@
 com/springboot/ecom/config/OpenApiConfig.class
+com/springboot/ecom/controller/WelcomeController.class
 com/springboot/ecom/controller/ProductController.class
 com/springboot/ecom/Application.class
 com/springboot/ecom/service/ProductService.class
